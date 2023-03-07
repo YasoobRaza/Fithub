@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- ===== Iconscout CSS ===== -->
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+
+    <!-- ===== CSS ===== -->
+    <link rel="stylesheet" href="/static/account.css">
+
+    <title>Account</title>
+</head>
+
+<body>
+
+    {% if messages %}
+    {% for message in messages %}
+    <div class=" alert alert-{{ message.tags }} alert-dismissible fade show w-100 my-10" role="alert">
+      <strong>{{ message }}</strong>
+      <button type="button" class="btn-close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    {% endfor %}
+    {% endif %}
+
+    <div class="cover">
+        <div class="container active">
+            <div class="forms">
+                <!-- Registration Form -->
+                <div class="form signup">
+                    <span class="title">SignUp</span>
+ 
+                    <form method="POST" action="#">
+                        {% csrf_token %}
+                        <div class="input-field">
+                            <input type="text" name="username" placeholder="Enter your name" required>
+                            <i class="uil uil-user"></i>
+                        </div>
+                        <div class="input-field">
+                            <input type="email" name="email" placeholder="Enter your email" required>
+                            <i class="uil uil-envelope icon"></i>
+                        </div>
+                        <div class="input-field">
+                            <input type="password" name="password1" class="password" placeholder="Create a password" required>
+                            <i class="uil uil-lock icon"></i>
+                        </div>
+                        <div class="input-field">
+                            <input type="password"name="password2" class="password" placeholder="Confirm a password" required>
+                            <i class="uil uil-lock icon"></i>
+                            <i class="uil uil-eye-slash showHidePw"></i>
+                        </div>
+
+                        <div class="checkbox-text">
+                            <div class="checkbox-content">
+                                <input type="checkbox" id="termCon">
+                                <label for="termCon" class="text">I accepted all terms and conditions</label>
+                            </div>
+                        </div>
+
+                        <div class="input-field button">
+                            <input type="submit" value="Signup">
+                        </div>
+                    </form>
+
+                    <div class="login-signup">
+                        <span class="text">Already a member?
+                            <a href="account" class="text login-link">Login Now</a>
+                        </span>
+                        <br><br>
+                        <a href="main" class="text signup-link"><i class="uil uil-estate"></i> HOME</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="/static/account.js"></script>
+</body>
+
+</html>

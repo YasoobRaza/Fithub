@@ -1,0 +1,79 @@
+/* @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+}
+.cover{
+    height: 100%;
+    width: 100%;
+    background-image: linear-gradient(rgba(230, 239, 242, 0.816),rgba(232, 243, 244, 0.945)),url(newcover1.jpg);
+    background-position: center;
+    background-size: 100vh;
+    position: relative;
+}
+.price{
+    padding:100px ;
+    color: solid black;
+}
+.container{
+    margin-top: 50px;
+    margin-bottom: 100px;
+    position: relative;
+}
+.navbar{
+    margin-bottom: 30px;
+}
+
+h3{
+    font-family: "Poppins", sans-serif;
+    color: black;
+}
+.mt-1{
+    color: blue;
+} */
+body{height: 100%;
+    width: 100%;
+    background-image: linear-gradient(rgba(241, 243, 243, 0.964),rgba(232, 243, 244, 0.945)),url("./back.jpg");
+    background-position: center;
+    background-size: 100vh;
+    position: relative;
+  margin: 0;
+  padding: 0;}
+          
+          h3,
+          h6 {
+              color:white;
+              font-family: "Raleway", sans-serif;
+              background-color: cornflowerblue;
+              padding: 10px 3px 10px 3px;
+          }
+       
+          html {
+              height: 100%;
+              line-height: 1.8;
+          }
+  
+          .w3-bar .w3-button {
+              padding: 18px;
+          }
+  
+  .navbar{
+    margin-bottom: 30px;
+  }
+  #about{
+    margin-top: 50px;
+  }
+  h4{
+    background-color: aliceblue;
+    padding: 5px 3px 5px 3px;
+  }
+  
+  i{
+    cursor: pointer;
+  }
+  h2{
+    font-size: larger
+  }
+  img{
+    cursor: pointer;
+  }

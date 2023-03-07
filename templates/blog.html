@@ -1,0 +1,257 @@
+{% extends 'base.html' %}
+
+{% block title %}Fithub- Work Hard To Get Better Life{% endblock title %}
+
+
+{% block body %}
+
+
+    <br><br><br>
+    <!-- Sidebar on small screens when clicking the menu icon -->
+    <nav class="w3-sidebar w3-bar-block w3-black w3-card w3-animate-left w3-hide-medium w3-hide-large"
+        style="display:none" id="mySidebar">
+        <a href="javascript:void(0)" onclick="w3_close()" class="w3-bar-item w3-button w3-large w3-padding-18">Close
+            ×</a>
+        <a href="main" onclick="w3_close()" class="w3-bar-item w3-button">HOME</a>
+        <a href="main#about" onclick="w3_close()" class="w3-bar-item w3-button">ABOUT</a>
+        <a href="main#team" onclick="w3_close()" class="w3-bar-item w3-button">TEAM</a>
+        <a href="main#review" onclick="w3_close()" class="w3-bar-item w3-button">REVIEWS</a>
+        <a href="#" onclick="w3_close()" class="w3-bar-item w3-button">BLOGS</a>
+        <a href="product" onclick="w3_close()" class="w3-bar-item w3-button">PRODUCTS</a>
+        <a href="main#contact" onclick="w3_close()" class="w3-bar-item w3-button">CONTACT</a>
+        
+        {% if user.is_authenticated %} 
+        <a href="order" onclick="w3_close()" class="w3-bar-item w3-button">Cart (<span id="cart1">0</span>)</a>
+        <a href="plan" onclick="w3_close()" class="w3-bar-item w3-button">Plans</a>
+        <a href="logout" onclick="w3_close()" class="w3-bar-item w3-button">LOGOUT</a>
+        {% else %}  
+        <a href="account" target="_blank" onclick="w3_close()" class="w3-bar-item w3-button">MY ACCOUNT</a>
+        {% endif %}
+    </nav>
+    <br><br>
+    <!-- for messages -->
+    {% if messages %}
+    {% for message in messages %}
+    <div class=" alert alert-{{ message.tags }} alert-dismissible fade show mb-0" role="alert">
+    <strong>{{ message }}</strong>
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+    </div>
+    {% endfor %}
+    {% endif %}
+    
+    
+      <h3 class="mb-5 w3-center w3-xlarge w3-margin w3-padding-large"><b>GYM & FITNESS BLOGS</b></h3>
+      <!-- Blog entry -->
+      {% for i in blog %}
+      <div class="w3-container w3-white w3-margin w3-padding-large" id="blog">
+        <div class="w3-center">
+            <p class="w3-center w3-xlarge mb-1"><b id="name{{i.blog_id}}" >{{i.blog_name}}</b></p>
+        </div>
+
+        <div class="w3-justify mb-3">
+          <img src='/media/{{i.image}}' id="img{{i.blog_id}}" alt="blog" style="width:65%;" class="rounded mx-auto d-block w3-padding-16 mb-2">
+          <p class="mt-1 p-desc"><strong>Fitness and Health</strong> {{i.desc}}</p><br>
+          
+          <div class="mt-2"><p class="w3-left"><button class="w3-button w3-white w3-border" onclick="likeFunction(this)"><b><i class="fa fa-thumbs-up"></i> Like</b></button></p>
+          <p class="w3-right"><button class="w3-button w3-black" onclick="myFunction('demo1')" ><b>Comments  </b> <span class="w3-tag w3-white">1</span></button></p>
+          <p class="w3-clear"></p>
+        </div>
+          <div class="w3-row w3-margin-bottom" id="demo1" style="display:none">
+            <br>
+            <hr>
+              <div class="w3-col l2 m3">
+                <img src="/static/img/team.jpg" style="width:90px;">
+              </div>
+              <div class="w3-col l10 m9">
+                <h4 class="bg-light mb-1"><b>George <span class="w3-opacity w3-medium">January 5, 2023, 6:32 PM</span></b></h4>
+                <p>Great blog post! Following</p>
+              </div>
+          </div>
+        </div>
+        <hr>
+        <br>
+      
+      </div>
+      {% endfor %}
+      
+      
+
+    {% comment %}
+      <div class="w3-container w3-white w3-margin w3-padding-large" id="blog">
+        <div class="w3-center">
+            
+            <p class="w3-center w3-xlarge mb-1"><b>TREADMILL RUNNING,  <span class="w3-opacity w3-large"> December 15, 2022</span></b></p>
+        </div>
+
+        <div class="w3-justify mb-3">
+          <img src="/static/img/blog-2.webp" alt="blog2" style="width:65%;" class="rounded mx-auto d-block w3-padding-16 mb-2">
+          <p class=""><strong>Fitness and Health</strong> Some text about this blog entry. Fashion fashion and mauris neque quam, fermentum ut nisl vitae, convallis maximus nisl.
+             Sed mattis nunc id lorem euismod placerat. Vivamus porttitor
+            magna enim, ac accumsan tortor cursus at. Phasellus sed ultricies mi non congue ullam corper.
+             Praesent tincidunt sedtellus ut rutrum. Sed vitae justo condimentum, porta lectus vitae,
+              ultricies congue gravida diam non fringilla.Sunt in culpa qui officia deserunt mollit anim id est laborum
+              consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
+              et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+              exercitation ullamco.</p><br>
+          <p>Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit,
+             sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+              quis nostrud exercitation ullamco. Sunt in culpa qui officia deserunt mollit anim id est laborum
+              consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
+              et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+              exercitation ullamco.</p>
+          <div class="mt-2"><p class="w3-left"><button class="w3-button w3-white w3-border" onclick="likeFunction(this)"><b><i class="fa fa-thumbs-up"></i> Like</b></button></p>
+          <p class="w3-right"><button class="w3-button w3-black" onclick="myFunction('demo2')" id="myBtn"><b>Comments  </b> <span class="w3-tag w3-white">2</span></button></p>
+          <p class="w3-clear"></p>
+        </div>
+    
+          
+          <!-- Example of comment field -->
+          <div id="demo2" style="display:none">
+            <div class="w3-row">
+                <br>
+              <hr>
+              <div class="w3-col l2 m3">
+                <img src="/static/img/team.jpg" style="width:90px;">
+              </div>
+              <div class="w3-col l10 m9">
+                <h4 class="bg-light mb-1 "><b>Amber <span class="w3-opacity w3-medium">December 26, 2022, 10:52 PM</span></b></h4>
+                <p>Love your blog page! Simply the best! Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p><br>
+              </div>
+            </div>
+            <div class="w3-row w3-margin-bottom">
+              <div class="w3-col l2 m3">
+                <img src="/static/img/team.jpg" style="width:90px;">
+              </div>
+              <div class="w3-col l10 m9">
+                <h4 class="bg-light"><b>Angie <span class="w3-opacity w3-medium">January 7, 2023, 9:12 PM</span></b></h4>
+                <p>I Love your blogs!!</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <hr>
+      <!-- Blog entry -->
+      <div class="w3-container w3-white w3-margin w3-padding-large" id="blog">
+        <div class="w3-center">
+            <p class="w3-center w3-xlarge mb-1"><b>LEG WORKOUTS,   <span class="w3-opacity w3-large"> November 28, 2022</span></b></p>
+        </div>
+
+        <div class="w3-justify mb-3">
+          <img src="/static/img/blog-3.jpg" alt="blog3" style="width:65%;" class="rounded mx-auto d-block w3-padding-16 mb-2">
+          <p class=""><strong>Fitness and Health</strong> Some text about this blog entry. Fashion fashion and mauris neque quam, fermentum ut nisl vitae, convallis maximus nisl.
+             Sed mattis nunc id lorem euismod placerat. Vivamus porttitor
+            magna enim, ac accumsan tortor cursus at. Phasellus sed ultricies mi non congue ullam corper.
+             Praesent tincidunt sedtellus ut rutrum. Sed vitae justo condimentum, porta lectus vitae,
+              ultricies congue gravida diam non fringilla.Sunt in culpa qui officia deserunt mollit anim id est laborum
+              consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
+              et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+              exercitation ullamco.</p><br>
+          <p>Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit,
+             sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+              quis nostrud exercitation ullamco. Sunt in culpa qui officia deserunt mollit anim id est laborum
+              consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
+              et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+              exercitation ullamco.</p>
+          <div class="mt-2"><p class="w3-left"><button class="w3-button w3-white w3-border" onclick="likeFunction(this)"><b><i class="fa fa-thumbs-up"></i> Like</b></button></p>
+          <p class="w3-right"><button class="w3-button w3-black" onclick="myFunction('demo3')" id="myBtn"><b>Comments  </b> <span class="w3-tag w3-white">3</span></button></p>
+          <p class="w3-clear"></p>
+        </div>
+    
+          
+          <!-- Example of comment field -->
+          <div id="demo3" style="display:none">
+            <br>
+            <hr>
+            <div class="w3-row w3-margin-bottom">
+              <div class="w3-col l2 m3">
+                <img src="/static/img/team.jpg" style="width:90px;">
+              </div>
+              <div class="w3-col l10 m9">
+                <h4 class="bg-light"><b>Jane <span class="w3-opacity w3-medium">January 10, 2022, 7:22 PM</span></b></h4>
+                <p>That was a great runway show! Thanks for everything.</p>
+              </div>
+            </div>
+            <div class="w3-row w3-margin-bottom">
+              <div class="w3-col l2 m3">
+                <img src="/static/img/team.jpg" style="width:90px;">
+              </div>
+              <div class="w3-col l10 m9">
+                <h4 class="bg-light"><b>John <span class="w3-opacity w3-medium">December 08, 2022, 10:32 PM</span></b></h4>
+                <p>Keep up the GREAT work! I am cheering for you!! Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.</p>
+              </div>
+            </div>
+            <div class="w3-row w3-margin-bottom">
+              <div class="w3-col l2 m3">
+                <img src="/static/img/team.jpg" style="width:90px;">
+              </div>
+              <div class="w3-col l10 m9">
+                <h4 class="bg-light"><b>Anja <span class="w3-opacity w3-medium">November 30, 2022, 9:12 PM</span></b></h4>
+                <p>Cant wait for the runway to start!</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <hr>
+      <div class="w3-container w3-white w3-margin w3-padding-large" id="blog">
+        <div class="w3-center">
+           
+            <p class="w3-center w3-xlarge mb-1"><b>PROTEIN DIET PLAN,   <span class="w3-opacity w3-large"> November 5, 2022</span></b></p>
+        </div>
+
+        <div class="w3-justify mb-3">
+          <img src="/static/img/blog-4.jpg" alt="blog1" style="width:65%;" class="rounded mx-auto d-block w3-padding-16 mb-2">
+          <p class=""><strong>Fitness and Health</strong> Some text about this blog entry. Fashion fashion and mauris neque quam, fermentum ut nisl vitae, convallis maximus nisl.
+             Sed mattis nunc id lorem euismod placerat. Vivamus porttitor
+            magna enim, ac accumsan tortor cursus at. Phasellus sed ultricies mi non congue ullam corper.
+             Praesent tincidunt sedtellus ut rutrum. Sed vitae justo condimentum, porta lectus vitae,
+              ultricies congue gravida diam non fringilla.Sunt in culpa qui officia deserunt mollit anim id est laborum
+              consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
+              et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+              exercitation ullamco.</p><br>
+          <p>Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit,
+             sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+              quis nostrud exercitation ullamco. Sunt in culpa qui officia deserunt mollit anim id est laborum
+              consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
+              et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+              exercitation ullamco.</p>
+          <div class="mt-2"><p class="w3-left"><button class="w3-button w3-white w3-border" onclick="likeFunction(this)"><b><i class="fa fa-thumbs-up"></i> Like</b></button></p>
+          <p class="w3-right"><button class="w3-button w3-black" onclick="myFunction('demo4')" id="myBtn"><b>Comments  </b> <span class="w3-tag w3-white">1</span></button></p>
+          <p class="w3-clear"></p>
+        </div>
+          <div class="w3-row w3-margin-bottom" id="demo4" style="display:none">
+            <br>
+            <hr>
+              <div class="w3-col l2 m3">
+                <img src="/static/img/team.jpg" style="width:90px;">
+              </div>
+              <div class="w3-col l10 m9">
+                <h4 class="bg-light"><b>Hassan <span class="w3-opacity w3-medium">December 3, 2022, 6:32 PM</span></b></h4>
+                <p>Great blog post! Following</p>
+              </div>
+          </div>
+        </div>
+      </div>
+    {% endcomment %}
+         
+<script>
+       
+function myFunction(id) {
+  var x = document.getElementById(id);
+  if (x.className.indexOf("w3-show") == -1) {
+    x.className += " w3-show";
+  } else { 
+    x.className = x.className.replace(" w3-show", "");
+  }
+}
+
+function likeFunction(x) {
+  x.style.fontWeight = "bold";
+  x.innerHTML = "✓ Liked";
+}
+</script>  
+<script src="/static/main.js"></script>
+{% endblock body %}

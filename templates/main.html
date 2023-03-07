@@ -1,0 +1,331 @@
+{% extends 'base.html' %}
+
+{% block title %}Fithub- Work Hard To Get Better Life{% endblock title %}
+
+{% block body %}
+
+
+
+        <br><br><br>
+        <!-- Sidebar on small screens when clicking the menu icon -->
+        <nav class="w3-sidebar w3-bar-block w3-black w3-card w3-animate-left w3-hide-medium w3-hide-large"
+            style="display:none" id="mySidebar">
+            <a href="javascript:void(0)" onclick="w3_close()" class="w3-bar-item w3-button w3-large w3-padding-18">Close
+                ×</a>
+            <a href="#" onclick="w3_close()" class="w3-bar-item w3-button">HOME</a>
+            <a href="#about" onclick="w3_close()" class="w3-bar-item w3-button">ABOUT</a>
+            <a href="#team" onclick="w3_close()" class="w3-bar-item w3-button">TEAM</a>
+            <a href="#review" onclick="w3_close()" class="w3-bar-item w3-button">REVIEWS</a>
+            <a href="blog" onclick="w3_close()" class="w3-bar-item w3-button">BLOGS</a>
+            <a href="product" onclick="w3_close()" class="w3-bar-item w3-button">PRODUCTS</a>
+            <a href="#contact" onclick="w3_close()" class="w3-bar-item w3-button">CONTACT</a>
+            
+            {% if user.is_authenticated %} 
+            <a href="order" onclick="w3_close()" class="w3-bar-item w3-button">Cart (<span id="cart1">0</span>)</a>
+            <a href="plan" onclick="w3_close()" class="w3-bar-item w3-button">Plans</a>
+            <a href="logout" onclick="w3_close()" class="w3-bar-item w3-button">LOGOUT</a>
+            {% else %} 
+            <a href="account" target="_blank" onclick="w3_close()" class="w3-bar-item w3-button">MY ACCOUNT</a>
+            {% endif %}
+        </nav>
+        <br>
+        <!-- for messages -->
+        {% if messages %}
+        {% for message in messages %}
+        <div class=" alert alert-{{ message.tags }} alert-dismissible fade show mb-0" role="alert">
+        <strong>{{ message }}</strong>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        </div>
+        {% endfor %}
+        {% endif %}
+
+        <section id="home">
+            <br>
+        <div class="webimg">
+            <p style="text-align: justify;">
+                <a title="Explore Now And Enjoy Our Products" href="#"><img class="img-fluid"
+                         src="/static/img/web.png"
+                        alt="Company cover photo">
+                </a>
+            </p>
+        </div>
+        <br><br><br>
+        <div class="w3-container w3-row w3-center w3-dark-grey w3-padding-64">
+            <div class="w3-quarter">
+              <span class="w3-xxlarge">14+</span>
+              <br />
+              Partners
+            </div>
+            <div class="w3-quarter">
+              <span class="w3-xxlarge">55+</span>
+              <br />
+              Store Products
+            </div>
+            <div class="w3-quarter">
+              <span class="w3-xxlarge">89+</span>
+              <br />
+              Happy Clients
+            </div>
+            <div class="w3-quarter">
+              <span class="w3-xxlarge">150+</span>
+              <br />
+              Registered Customers
+            </div>
+          </div>
+        </section>
+        <br>
+        <br>
+        <!-- About Section -->
+        <section class="w3-container mb-5" id="about">
+            <br><br><br><br>
+            <h3 class="mb-4 w3-center w3-xlarge">
+                <b>ABOUT THE COMPANY</b>
+            </h3>
+            <p class="w3-center w3-xlarge">
+                <b>Key features of our company</b>
+            </p>
+            <div
+                class="w3-row-padding w3-center py-10"
+                style="margin-top: 64px; background-color: white"
+            >
+                <div
+                    class="w3-quarter mb-2 px-2 py-3 border-success"
+                    style="
+                        border: 1px solid black;
+                        border-radius: 5%;
+                    "
+                >
+                    <i
+                        class="fa-solid fa-heart-pulse w3-margin-bottom w3-jumbo"
+                    ></i>
+                    <p class="w3-large mb-1"><b>Health Monitoring</b></p>
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur
+                        adipiscing elit, sed do eiusmod tempor
+                        incididunt ut labore et dolore.Lorem ipsum dolor sit amet, consectetur
+                        adipiscing elit, sed do eiusmod tempor
+                        incididunt ut labore et dolore.
+                    </p>
+                </div>
+                <div
+                    class="w3-quarter mb-2 px-2 py-3 border-danger"
+                    style="
+                        border: 1px solid black;
+                        border-radius: 5%;
+                    "
+                >
+                    <i
+                        class="fa-solid fa-dumbbell w3-margin-bottom w3-jumbo"
+                    ></i>
+                    <p class="w3-large mb-1"><b>Training</b></p>
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur
+                        adipiscing elit, sed do eiusmod tempor
+                        incididunt ut labore et dolore.Lorem ipsum dolor sit amet, consectetur
+                        adipiscing elit, sed do eiusmod tempor
+                        incididunt ut labore et dolore.
+                    </p>
+                </div>
+                <div
+                    class="w3-quarter mb-2 px-2 py-3 border-info"
+                    style="
+                        border: 1px solid black;
+                        border-radius: 5%;
+                    "
+                >
+                    <i
+                        class="fa-solid fa-cart-shopping w3-margin-bottom w3-jumbo"
+                    ></i>
+                    <p class="w3-large mb-1"><b>Store</b></p>
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur
+                        adipiscing elit, sed do eiusmod tempor
+                        incididunt ut labore et dolore.Lorem ipsum dolor sit amet, consectetur
+                        adipiscing elit, sed do eiusmod tempor
+                        incididunt ut labore et dolore.
+                    </p>
+                </div>
+                <div
+                    class="w3-quarter px-2 py-3 border-primary"
+                    style="
+                        border: 1px solid black;
+                        border-radius: 5%;
+                    "
+                >
+                    <i
+                        class="fa-solid fa-burger w3-margin-bottom w3-jumbo"
+                    ></i>
+                    <p class="w3-large mb-1"><b>Blogs About Fitness</b></p>
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur
+                        adipiscing elit, sed do eiusmod tempor
+                        incididunt ut labore et dolore.Lorem ipsum dolor sit amet, consectetur
+                        adipiscing elit, sed do eiusmod tempor
+                        incididunt ut labore et dolore.
+                    </p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Team Section -->
+        <div class="w3-container mb-5"  id="team">
+            <br><br><br><br>
+            <h3 class="mb-5 w3-center w3-xlarge"><b>THE TEAM</b></h3>
+            <p class="w3-center w3-xlarge"><b>Persons who run this company</b></p>
+            <div class="w3-row-padding" style="margin-top:60px">
+                <div class="w3-col l3 m6 w3-margin-bottom">
+                    <div class="w3-card">
+                        <img class="w3-hover-grayscale" src="/static/img/team.jpg" alt="USMAN" style="width:100%">
+                        <div class="w3-container">
+                            <br>
+                            <h4 class="text-center w3-large"><b>Usman Yousuf</b></h4>
+                            <br>
+                            <p class="bg-light px-2 py-2 text-center"><b>CEO & Founder</b></p>
+                            <br>
+                            <p>Phasellus eget enim eu lectus faucibus vestibulum. Suspendisse sodales peln
+                                elementum.Phase eget enim eu lectus faucibus vestibulum. Suspendisse sodales peln
+                                elementum.</p>
+                            <br>
+                            <p><button class="w3-button w3-light-grey w3-block"><i class="fa fa-phone"></i>
+                                    +92304356783</button></p>
+                            <br>
+                        </div>
+                    </div>
+                </div>
+                <div class="w3-col l3 m6 w3-margin-bottom">
+                    <div class="w3-card">
+                        <img class="w3-hover-grayscale" src="/static/img/team.jpg" alt="YASOOB" style="width:100%">
+                        <div class="w3-container">
+                            <br>
+                            <h4 class="text-center w3-large"><b>Yasoob Raza</b></h4>
+                            <br>
+                            <p class="bg-light px-2 py-2 text-center"><b>President</b></p>
+                            <br>
+                            <p>Phasellus eget enim eu lectus faucibus vestibulum. Suspendisse sodales peln
+                                elementum.Phase eget enim eu lectus faucibus vestibulum. Suspendisse sodales peln
+                                elementum.</p>
+                            <br>
+                            <p><button class="w3-button w3-light-grey w3-block"><i class="fa fa-phone"></i>
+                                    +92398765432</button></p>
+                            <br>
+                        </div>
+                    </div>
+                </div>
+                <div class="w3-col l3 m6 w3-margin-bottom">
+                    <div class="w3-card">
+                        <img class="w3-hover-grayscale" src="/static/img/team.jpg" alt="HASSAN" style="width:100%">
+                        <div class="w3-container">
+                            <br>
+                            <h4 class="text-center w3-large"><b>Hassan Mehdi</b></h4>
+                            <br>
+                            <p class="bg-light px-2 py-2 text-center"><b>Vice President</b></p>
+                            <br>
+                            <p>Phasellus eget enim eu lectus faucibus vestibulum. Suspendisse sodales peln
+                                elementum.Phase eget enim eu lectus faucibus vestibulum. Suspendisse sodales peln
+                                elementum.</p>
+                            <br>
+                            <p><button class="w3-button w3-light-grey w3-block"><i class="fa fa-phone"></i>
+                                    +92834260913</button></p>
+                            <br>
+                        </div>
+                    </div>
+                </div>
+                <div class="w3-col l3 m6 w3-margin-bottom">
+                    <div class="w3-card">
+                        <img class="w3-hover-grayscale" src="/static/img/team.jpg" alt="JAHANZAIB" style="width:100%">
+                        <div class="w3-container">
+                            <br>
+                            <h4 class="text-center w3-large"><b>Jahanzaib Khan</b></h4>
+                            <br>
+                            <p class="bg-light px-2 py-2 text-center"><b>Manager</b></p>
+                            <br>
+                            <p>Phasellus eget enim eu lectus faucibus vestibulum. Suspendisse sodales peln
+                                elementum.Phase eget enim eu lectus faucibus vestibulum. Suspendisse sodales peln
+                                elementum.</p>
+                            <br>
+                            <p><button class="w3-button w3-light-grey w3-block"><i class="fa fa-phone"></i>
+                                    +92132564287</button></p>
+                            <br>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+          <section class="w3-container bg-light" id="review">
+            <br><br><br><br>
+            <h3 class="w3-center w3-xlarge mb-5"><b>CUSTOMER REVIEWS</b></h3>
+            <div class="w3-row">
+              <div class="w3-col m2 text-center">
+                <img class="w3-circle" src="/static/img/team.jpg" style="width:110px;height:110px">
+              </div>
+              <div class="mt-3 w3-col m9 w3-container">
+                <h2><b>Hamza <span class="w3-opacity w3-medium">Jan 15, 2023, 10:42 AM</span></b></h4>
+                <p class="mt-2">Keep up the GREAT work! I am cheering for you!!
+                     Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                      sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p><br>
+              </div>
+            </div>
+            <br><br>
+            <div class="w3-row">
+                <div class="w3-col m2 text-center">
+                  <img class="w3-circle" src="/static/img/team.jpg" style="width:110px;height:110px">
+                </div>
+                <div class="mt-3 w3-col m9 w3-container">
+                  <h2><b>Ali  <span class="w3-opacity w3-medium">Jan 03, 2023, 9:12 PM</span></b></h4>
+                  <p class="mt-2">Keep up the GREAT work! I am cheering for you!!
+                       Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p><br>
+                </div>
+              </div>
+              <br><br>
+              <div class="w3-row">
+                <div class="w3-col m2 text-center">
+                  <img class="w3-circle" src="/static/img/team.jpg" style="width:110px;height:110px">
+                </div>
+                <div class="mt-3 w3-col m9 w3-container">
+                  <h2><b>Huzaifa  <span class="w3-opacity w3-medium">Dec 28, 2022, 7:23 PM</span></b></h4>
+                  <p class="mt-2">Keep up the GREAT work! I am cheering for you!!
+                       Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p><br>
+                </div>
+              </div>
+              <br><br>
+              <div class="w3-row">
+                <div class="w3-col m2 text-center">
+                  <img class="w3-circle" src="/static/img/team.jpg" style="width:110px;height:110px">
+                </div>
+                <div class="mt-3 w3-col m9 w3-container">
+                  <h2><b>Umer <span class="w3-opacity w3-medium">Dec 09, 2022, 11:19 PM</span></b></h4>
+                  <p class="mt-2">Keep up the GREAT work! I am cheering for you!!
+                       Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p><br>
+                </div>
+              </div>
+              <br><br>
+          </section>
+          
+        <!--contact section-->
+        <div class="w3-container w3-light-grey" id="contact">
+            <br><br><br><br>
+            <h3 class="w3-center w3-xlarge"><b>CONTACT US</b></h3>
+            <div style="margin-top:48px">
+                <p><i class="fa fa-map-marker fa-fw w3-xxlarge w3-margin-right"></i><b> Karachi, Pakistan</b></p><br>
+                <p><i class="fa fa-phone fa-fw w3-xxlarge w3-margin-right"></i><b> Phone: +92 33151515</b></p><br>
+                <a href="mailto:usmancis99@gmail.com" style="text-decoration: none;"><p><i class="fa fa-envelope fa-fw w3-xxlarge w3-margin-right"> </i><b> Email: Fithub@gmail.com</b></p></a>
+                <br>
+                <!-- Image of location/map -->
+                <img src="/static/img/map.jpg" class="w3-image w3-greyscale" style="width:100%;margin-top:48px">
+            </div>
+        </div>
+
+        
+        
+          
+
+    <script src="/static/main.js">// Toggle between showing and hiding the sidebar when clicking the menu icon
+
+    </script>
+{% endblock body %}

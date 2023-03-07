@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock title %}</title>
+    <link rel="shortcut icon" href="./static/img/favicon.svg" type="image/svg+xml" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="/static/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <link rel="stylesheet" href="/static/style.css">
+    {% block link %}{% endblock link %}
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+        crossorigin="anonymous"></script>
+    <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+    <style> 
+      
+        h3{
+            color: white;
+        }
+        {% block style %}{% endblock style %}
+    </style>
+</head>
+
+<body>
+
+    <!-- Navbar (sit on top) -->
+    <div class="w3-top">
+                <div class="w3-bar w3-black w3-card container-fluid py-1" id="myNavbar">
+                    <a class="navbar-brand mx-2 my-0 py-0" href="#">
+                        <img src="/static/img/logo.jpeg" alt="" width="70" height="65" class="d-inline-block align-text-top"></a>
+                    <!-- Right-sided navbar links -->
+                    <div class="w3-right w3-hide-small">
+                        <a href="main" class="w3-bar-item w3-button w3-hover-blue"><i class="fa fa-home"></i> HOME</a>
+                        <a href="main#about" class="w3-bar-item w3-button w3-hover-blue"><i class="fa fa-globe"></i> ABOUT</a>
+                        <a href="main#team" class="w3-bar-item w3-button w3-hover-blue"><i class="fa fa-children"></i> TEAM</a>
+                        <a href="main#review" class="w3-bar-item w3-button w3-hover-blue"><i class="fa fa-comment"></i> REVIEWS</a>
+                        <a href="blog" class="w3-bar-item w3-button w3-hover-blue"><i class="fas fa-comment-alt"></i> BLOGS</a>
+                        <a href="products" class="w3-bar-item w3-button w3-hover-blue"><i class="fas fa-shopping-basket"></i> PRODUCTS</a>
+                        <a href="main#contact" class="w3-bar-item w3-button w3-hover-blue"><i class="fa fa-envelope"></i> CONTACT</a>
+                        
+                        {% if user.is_authenticated %} 
+                        <div class="w3-dropdown-hover">
+                          <button class="w3-button"><i class="fa fa-user"></i>&nbsp {{request.user|upper}}</button>
+                            <div class="w3-dropdown-content w3-bar-block w3-card-4">
+                                <a href="order"class="w3-bar-item w3-button w3-hover-blue">Cart (<span id="cart">0</span>)</a>
+                                <a href="plan"class="w3-bar-item w3-button w3-hover-blue">Plans</a>
+                                <a href="logout" class="w3-bar-item w3-button w3-hover-blue">Logout</a>
+                            </div>
+                        </div>
+                        {% else %} 
+                        <a href="account" class="w3-bar-item w3-button w3-hover-blue"><i class="fa fa-user"></i> ACCOUNT</a>
+                        {% endif %}
+                    </div>
+                    <!-- Hide right-floated links on small screens and replace them with a menu icon -->
+                    <a href="javascript:void(0)" class="w3-bar-item w3-button w3-right w3-hide-large w3-hide-medium"
+                        onclick="w3_open()">
+                        <i class="fa fa-bars"></i>
+                    </a>
+                </div>
+    </div>
+
+    {% block body %}{% endblock body %}
+
+    <!-- Footer. This section contains an ad for W3Schools Spaces. You can leave it to support us. -->
+    <footer class="footer w3-center w3-black w3-padding-64">
+        <a class="btn btn-success" href="#">
+          <i class="fa fa-arrow-up w3-margin-right"></i>
+          Go to Top
+        </a>
+        <div class="w3-xlarge w3-section">
+          <i
+            class="fa-brands fa-facebook-official w3-hover-opacity me-1"
+          ></i>
+          <i
+            class="fa-brands fa-instagram w3-hover-opacity me-1"
+          ></i>
+          <i
+            class="fa-brands fa-twitter w3-hover-opacity me-1"
+          ></i>
+          <i
+            class="fa-brands fa-youtube w3-hover-opacity me-1"
+          ></i>
+        </div>
+        <p class="w3-large text-info">
+          This website is made by combined efforts of Usman, Yasoob, Hassan and
+          Jahanzaib
+          <b class="px-3">©</b>
+        </p>
+        <br />
+        <a
+          class="btn btn-light border-info btn-small w3-margin-bottom"
+          style="border: 4px solid"  href="product.html"
+        >
+          <b>Buy now</b>
+        </a>
+    </footer>
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+<script>
+    
+      {% if loged_out %}
+      localStorage.clear()
+      cart={}
+      localStorage.setItem('cart', JSON.stringify(cart)); 
+      {% endif %}
+      
+      if(localStorage.getItem('cart') == null)
+      {
+      var cart={};
+      }
+      else{
+      cart= JSON.parse(localStorage.getItem('cart'));
+      document.getElementById('cart').innerHTML = Object.keys(cart).length;
+      document.getElementById('cart1').innerHTML = Object.keys(cart).length;
+      }
+  
+      
+  
+</script>
+
+{% block js %}{% endblock js %}
+
+</body>
+</html>
