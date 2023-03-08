@@ -4,9 +4,7 @@ Welcome to Fithub - your ultimate destination for all things fitness! Our websit
 
 ## Quick Demo
 
-
-
-
+https://user-images.githubusercontent.com/90134146/223850939-1eb40417-0641-450b-a33a-cc906eaa9ba8.mp4
 
 ### hosted at: http://yasoobraza.pythonanywhere.com
 
